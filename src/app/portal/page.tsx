@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 
 export default function PortalPage() {
@@ -14,11 +15,11 @@ export default function PortalPage() {
             { icon: "💳", title: "Billing", desc: "View invoices and make payments", href: "/portal" },
             { icon: "⚙️", title: "Settings", desc: "Manage your account preferences", href: "/settings" },
           ].map((item) => (
-            <Card key={item.title} className="p-6 hover:shadow-xl transition cursor-pointer">
+            <Link key={item.title} href={item.href}><Card className="p-6 hover:shadow-lift transition cursor-pointer h-full">
               <div className="text-3xl mb-3">{item.icon}</div>
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{item.title}</h2>
               <p className="text-gray-600 dark:text-gray-300 text-sm">{item.desc}</p>
-            </Card>
+            </Card></Link>
           ))}
         </div>
       </div>

@@ -38,6 +38,7 @@ const navItems = [
   { name: "Home", href: "/" },
   { name: "Treatments", href: "/treatments" },
   { name: "Surgeries", href: "/surgeries" },
+  { name: "Find a Doctor", href: "/doctors" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -131,7 +132,7 @@ export default function Header() {
       <div className={`${isDarkMode ? "bg-gray-900" : "bg-navy-dark"} text-white text-sm transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between py-2 gap-2">
           <div className="flex flex-wrap items-center gap-4">
-            <a href="tel:+1234567890" className="flex items-center gap-1 hover:text-emerald-400 transition">
+            <a href="tel:+263832844556" className="flex items-center gap-1 hover:text-teal transition">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -169,6 +170,7 @@ export default function Header() {
               </svg>
               123 Livingstone Way, Victoria Falls
             </div>
+            <div className="text-gray-300 hidden md:flex items-center gap-1">Mon–Fri 8:00 AM–5:00 PM · Sat 8:00 AM–12:00 PM</div>
           </div>
         </div>
       </div>
@@ -426,7 +428,7 @@ export default function Header() {
             </div>
 
             {/* CTA Button */}
-            <Link href="/book-appointment" className="hidden sm:inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-full font-semibold text-sm transition shadow-lg shadow-emerald-500/25 hover:scale-105 transform">
+            <Link href="/book-appointment" className="hidden sm:inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition shadow-soft">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
@@ -492,7 +494,7 @@ export default function Header() {
               </Link>
             ))}
 
-            <Link href="/book-appointment" className="block mt-3 text-center bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-full font-semibold transition" onClick={() => setMobileOpen(false)}>
+            <Link href="/book-appointment" className="block mt-3 text-center bg-teal hover:bg-teal-dark text-white py-3 rounded-lg font-semibold transition" onClick={() => setMobileOpen(false)}>
               Book Appointment
             </Link>
           </div>

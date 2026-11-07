@@ -31,7 +31,7 @@ export default function InsurancePage() {
             Our billing team is here to help you understand your benefits and maximize your coverage.
           </p>
           <p className="text-gray-600 dark:text-gray-300">
-            📞 Call: +1 (234) 567-890 (Option 2)<br />
+            📞 Call: +263 (0) 83 284 4556<br />
             ✉️ Email: billing@vicfallsclinic.co.zw
           </p>
         </Card>

@@ -73,16 +73,18 @@ const treatments = [
     description: "Expert tympanoplasty and myringoplasty for perforated eardrums and hearing improvement.",
     symptoms: ["Hearing loss", "Ear discharge", "Pain", "Tinnitus"],
     treatments: ["Tympanoplasty", "Myringoplasty", "Patch grafts", "Surgical reconstruction"]
-  }
+  },
+  { id:"throat", title:"Throat Infections", icon:"🗣️", description:"Professional treatment for throat infections, voice disorders, and related conditions.", symptoms:["Sore throat","Difficulty swallowing","Hoarse voice","Swollen glands"], treatments:["Medication","Voice therapy","Minor procedures","Surgery if needed"]},
+  { id:"tumors", title:"Head & Neck Tumors", icon:"🎗️", description:"Assessment and care pathways for head and neck tumors and related conditions.", symptoms:["Lump in neck","Persistent hoarseness","Difficulty swallowing","Unexplained weight loss"], treatments:["Biopsy","Imaging","Surgical treatment","Referral pathways"]}
 ];
 
 export default function TreatmentsPage() {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <section className="bg-navy-dark text-white py-16">
+      <section className="page-header">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Our Treatments</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="font-serif">Our Treatments</h1>
+          <p className="font-serif text-lg">
             Comprehensive ENT treatments using the latest medical advancements and evidence-based approaches.
           </p>
         </div>

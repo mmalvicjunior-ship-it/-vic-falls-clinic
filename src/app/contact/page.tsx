@@ -23,10 +23,10 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <section className="bg-navy-dark text-white py-16">
+      <section className="page-header">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="font-serif">Contact Us</h1>
+          <p className="text-lg opacity-90 max-w-2xl">
             Get in touch with our team for appointments, inquiries, or emergency care.
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Phone</h3>
                     <p className="text-gray-600 dark:text-gray-300">+263 (0) 83 284 4556</p>
-                    <p className="text-gray-500 text-sm">24/7 Emergency: +1 (234) 567-891</p>
+                    <p className="text-gray-500 text-sm">Phone: +263 (0) 83 284 4556</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">

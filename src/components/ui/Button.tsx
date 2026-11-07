@@ -1,39 +1,5 @@
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: "primary" | "secondary" | "outline";
-  size?: "sm" | "md" | "lg";
-  className?: string;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-}
-
-export function Button({
-  children,
-  variant = "primary",
-  size = "md",
-  className = "",
-  onClick,
-  type = "button"
-}: ButtonProps) {
-  const variants = {
-    primary: "bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/25",
-    secondary: "bg-white hover:bg-gray-100 text-navy-dark",
-    outline: "border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white"
-  };
-
-  const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg"
-  };
-
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`${variants[variant]} ${sizes[size]} rounded-full font-semibold transition transform hover:scale-105 ${className}`}
-    >
-      {children}
-    </button>
-  );
-}
+interface ButtonProps{children:React.ReactNode;variant?:"primary"|"secondary"|"outline";size?:"sm"|"md"|"lg";className?:string;onClick?:()=>void;type?:"button"|"submit"|"reset"}
+export function Button({children,variant="primary",size="md",className="",onClick,type="button"}:ButtonProps){
+const v={primary:"bg-teal hover:bg-teal-dark text-white shadow-soft",secondary:"bg-navy hover:bg-navy-light text-white shadow-soft",outline:"border border-teal text-teal hover:bg-teal hover:text-white"};
+const s={sm:"px-4 py-2 text-sm",md:"px-6 py-2.5 text-base",lg:"px-7 py-3 text-base"};
+return <button type={type} onClick={onClick} className={`${v[variant]} ${s[size]} rounded-lg font-semibold transition hover:-translate-y-0.5 focus-visible:outline-none ${className}`}>{children}</button>}

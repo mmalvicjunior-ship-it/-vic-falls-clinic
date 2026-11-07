@@ -14,10 +14,10 @@ const surgeries = [
 export default function SurgeriesPage() {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <section className="bg-navy-dark text-white py-16">
+      <section className="page-header">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Surgical Procedures</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="font-serif">Surgical Procedures</h1>
+          <p className="text-lg opacity-90 max-w-2xl">
             Advanced surgical solutions for complex ENT conditions with a focus on safety and optimal outcomes.
           </p>
         </div>

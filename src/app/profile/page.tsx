@@ -17,7 +17,7 @@ export default function ProfilePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div><label className="text-sm text-gray-500">Email</label><p className="font-medium text-gray-900 dark:text-white">john.doe@email.com</p></div>
-            <div><label className="text-sm text-gray-500">Phone</label><p className="font-medium text-gray-900 dark:text-white">+1 (234) 567-890</p></div>
+            <div><label className="text-sm text-gray-500">Phone</label><p className="font-medium text-gray-900 dark:text-white">+263 (0) 83 284 4556</p></div>
             <div><label className="text-sm text-gray-500">Date of Birth</label><p className="font-medium text-gray-900 dark:text-white">Jan 15, 1985</p></div>
             <div><label className="text-sm text-gray-500">Insurance</label><p className="font-medium text-gray-900 dark:text-white">Health Plus Premium</p></div>
           </div>

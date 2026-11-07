@@ -1,158 +1,43 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-
-export default function HomePage() {
-  return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-navy-dark to-navy text-white py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold mb-6">
-              Quality <span className="text-emerald-400">Healthcare</span> in Victoria Falls
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Affordable, compassionate medical care for the whole family. Serving the Victoria Falls
-              community with trusted, professional healthcare services.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/book-appointment">
-                <Button variant="primary" size="lg">
-                  Book Appointment
-                </Button>
-              </Link>
-              <Link href="/treatments">
-                <Button variant="outline" size="lg">
-                  Explore Treatments
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-0 right-0 opacity-10 text-9xl">
-          🏥
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-500">35+</div>
-              <div className="text-gray-600 dark:text-gray-400">Years of Excellence</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-500">50K+</div>
-              <div className="text-gray-600 dark:text-gray-400">Patients Treated</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-500">98%</div>
-              <div className="text-gray-600 dark:text-gray-400">Satisfaction Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-500">15+</div>
-              <div className="text-gray-600 dark:text-gray-400">Expert Specialists</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Preview */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Our <span className="text-emerald-500">Specialties</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "🦻",
-                title: "Ear Care",
-                description: "Expert treatment for hearing loss, ear infections, and balance disorders.",
-                href: "/treatments#ear-pain"
-              },
-              {
-                icon: "👃",
-                title: "Nose & Sinus",
-                description: "Comprehensive care for sinusitis, allergies, and nasal obstructions.",
-                href: "/treatments#sinus"
-              },
-              {
-                icon: "🗣️",
-                title: "Throat & Voice",
-                description: "Professional treatment for throat infections, voice disorders, and more.",
-                href: "/treatments#throat"
-              }
-            ].map((service) => (
-              <Card key={service.title} className="p-6 hover:shadow-xl transition">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {service.description}
-                </p>
-                <Link href={service.href} className="text-emerald-500 hover:text-emerald-600 font-medium">
-                  Learn More →
-                </Link>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            What Our <span className="text-emerald-500">Patients Say</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Sarah Johnson",
-                text: "The care I received was exceptional. Dr. Smith and his team made me feel comfortable throughout my treatment.",
-                rating: 5
-              },
-              {
-                name: "Michael Chen",
-                text: "After years of sinus problems, I finally found relief. The staff is professional and caring.",
-                rating: 5
-              },
-              {
-                name: "Emily Rodriguez",
-                text: "Life-changing! My hearing is restored and the entire experience was seamless from start to finish.",
-                rating: 5
-              }
-            ].map((testimonial) => (
-              <Card key={testimonial.name} className="p-6">
-                <div className="text-yellow-400 text-lg mb-3">{"⭐".repeat(testimonial.rating)}</div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">&quot;{testimonial.text}&quot;</p>
-                <p className="font-semibold text-gray-900 dark:text-white">- {testimonial.name}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-emerald-500 py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-white/90 mb-8 text-lg max-w-2xl mx-auto">
-            Schedule your appointment today and take the first step toward better ear, nose, and throat health.
-          </p>
-          <Link href="/book-appointment">
-            <Button variant="secondary" size="lg">
-              Book Your Appointment
-            </Button>
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
-}
+const specialties=[
+{icon:"🦻",title:"Ear Pain Treatment",d:"Diagnosis and treatment for acute and chronic ear pain and infections.",href:"/treatments#ear-pain"},
+{icon:"🔊",title:"Hearing Loss",d:"Assessment and management of mild to profound hearing loss.",href:"/treatments#hearing-loss"},
+{icon:"🌀",title:"Vertigo Treatment",d:"Care for spinning sensation, balance problems and dizziness.",href:"/treatments#vertigo"},
+{icon:"👄",title:"Tonsil Removal",d:"Surgical options for chronic tonsil infections and breathing issues.",href:"/treatments#tonsils"},
+{icon:"🤧",title:"Allergy & Rhinitis",d:"Testing, medication and immunotherapy for allergies and congestion.",href:"/treatments#allergy"},
+{icon:"👃",title:"Sinus & Polyps",d:"Treatment for sinusitis, polyps and nasal obstruction.",href:"/treatments#sinus"},
+{icon:"😴",title:"Snoring & Sleep Apnea",d:"Assessment and treatment including CPAP and lifestyle support.",href:"/treatments#snoring"},
+{icon:"😊",title:"Facial Nerve Disorders",d:"Care for facial weakness, drooping and related conditions.",href:"/treatments#facial-nerve"},
+{icon:"👂",title:"Ear Drum Repair",d:"Repair of eardrum perforations and middle-ear reconstruction.",href:"/treatments#ear-drum"},
+{icon:"🔬",title:"Nasal Septum Surgery",d:"Septoplasty to correct a deviated septum for improved breathing.",href:"/surgeries#septoplasty"},
+{icon:"🗣️",title:"Throat Infections",d:"Professional treatment for throat infections and voice disorders.",href:"/treatments#throat"},
+{icon:"🎗️",title:"Head & Neck Tumors",d:"Assessment and referral pathways for head and neck conditions.",href:"/treatments#tumors"}];
+const doctors=[
+{name:"Dr. James Smith",s:"Chief of ENT Surgery",e:"20+ years",d:"Board-certified ENT surgeon specializing in complex head and neck procedures."},
+{name:"Dr. Sarah Johnson",s:"Pediatric ENT",e:"15+ years",d:"Expert in treating ENT conditions in children of all ages."},
+{name:"Dr. Michael Chen",s:"Head & Neck Surgery",e:"18+ years",d:"Specialized in complex head and neck surgical procedures."},
+{name:"Dr. Emily Davis",s:"Audiology",e:"12+ years",d:"Expert in hearing assessment and rehabilitation."},
+{name:"Dr. Robert Wilson",s:"Sinus & Allergy",e:"14+ years",d:"Pioneer in balloon sinuplasty and minimally invasive sinus surgery."},
+{name:"Dr. Lisa Anderson",s:"Voice Disorders",e:"10+ years",d:"Specialist in voice disorders, swallowing difficulties, and laryngology."}];
+const faqs=[
+["How do I book an appointment?","Use the Book Appointment page to request a preferred date, time and department. The clinic confirms requests within 24 hours."],
+["Where is the clinic located?","123 Livingstone Way, Victoria Falls, Zimbabwe."],
+["What are the opening hours?","Monday–Friday: 8:00 AM–5:00 PM and Saturday: 8:00 AM–12:00 PM."],
+["How can I contact the clinic?","Call +263 (0) 83 284 4556 or email info@vicfallsclinic.co.zw."],
+["What services are available?","Ear, nose and throat treatments and surgical procedures are listed on the Treatments and Surgeries pages."]];
+export default function HomePage(){return <div className="bg-white dark:bg-gray-900">
+<section className="bg-navy text-white"><div className="max-w-7xl mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-12 items-center">
+<div className="reveal"><span className="section-eyebrow">Specialist ENT Care · Victoria Falls</span><h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">Quality healthcare in <span className="text-teal">Victoria Falls</span></h1><p className="text-white/80 text-lg mb-8 max-w-xl">Affordable, compassionate medical care for the whole family. Serving the Victoria Falls community with trusted, professional healthcare services.</p><div className="flex flex-wrap gap-4"><Link href="/book-appointment"><Button variant="primary" size="lg">Book Appointment</Button></Link><Link href="/treatments"><Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-navy">Explore Treatments</Button></Link></div><p className="text-sm text-white/60 mt-8">123 Livingstone Way · Mon–Fri 8:00 AM–5:00 PM · Sat 8:00 AM–12:00 PM</p></div>
+<div className="reveal bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10"><p className="font-serif text-2xl mb-6">Ear, Nose &amp; Throat Care</p><ul className="space-y-3 text-white/80">{specialties.slice(0,5).map(s=><li key={s.title} className="flex justify-between border-b border-white/10 pb-3"><span>{s.icon} {s.title}</span><Link className="text-teal font-medium" href={s.href}>Learn →</Link></li>)}</ul><Link href="/book-appointment" className="inline-block mt-8 text-teal font-semibold">Book a consultation →</Link><p className="text-xs text-white/50 mt-6">Illustrative service overview. Stock-style imagery is not used to depict actual clinic staff or facilities.</p></div>
+</div></section>
+<section className="py-14 bg-mist dark:bg-gray-800"><div className="max-w-7xl mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-6">{[["11","ENT Treatments Listed"],["8","Surgical Procedures"],["6","Doctors on the Team"],["6","Days a Week Open"]].map(([n,l])=><div key={l} className="text-center bg-white dark:bg-gray-900 rounded-xl p-6 shadow-soft"><div className="font-serif text-4xl text-teal font-semibold">{n}</div><div className="text-muted text-sm mt-1">{l}</div></div>)}</div></section>
+<section className="py-20 bg-white dark:bg-gray-900"><div className="max-w-7xl mx-auto px-4"><span className="section-eyebrow text-center">Our Specialties</span><h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-12">Comprehensive ENT Care</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">{specialties.map(s=><Card key={s.title} className="p-6 hover:shadow-lift hover:-translate-y-1 transition"><div className="text-3xl mb-4">{s.icon}</div><h3 className="text-lg font-semibold mb-2">{s.title}</h3><p className="text-muted text-sm mb-4 leading-relaxed">{s.d}</p><Link href={s.href} className="text-teal font-medium text-sm">Learn More →</Link></Card>)}</div></div></section>
+<section className="py-20 bg-teal-light dark:bg-gray-800"><div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12"><div><span className="section-eyebrow">Why Choose Us</span><h2 className="font-serif text-3xl md:text-4xl font-semibold mb-6">Trusted care, close to home</h2><p className="text-muted leading-relaxed">Vic Falls Clinic provides quality, affordable healthcare to the Victoria Falls community. Our team offers ear, nose and throat treatments and surgical procedures listed on this site, with pre-operative evaluation through to post-surgical follow-up.</p></div><div className="space-y-4">{["Comprehensive ENT treatments using evidence-based approaches","Surgical care with a focus on safety and optimal outcomes","Complete care from evaluation to follow-up"].map(t=><div key={t} className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-soft flex gap-3"><span className="text-teal">✓</span><span>{t}</span></div>)}</div></div></section>
+<section className="py-20 bg-white dark:bg-gray-900"><div className="max-w-7xl mx-auto px-4"><span className="section-eyebrow text-center">Find a Doctor</span><h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-12">Meet Our Team</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">{doctors.map(d=><Card key={d.name} className="p-6"><div className="w-12 h-12 bg-teal-light text-teal rounded-full flex items-center justify-center text-xl mb-4">👨‍⚕️</div><h3 className="font-semibold text-lg">{d.name}</h3><p className="text-teal text-sm font-medium">{d.s} · {d.e}</p><p className="text-muted text-sm mt-2 leading-relaxed">{d.d}</p></Card>)}</div><div className="text-center mt-10"><Link href="/doctors"><Button variant="outline">View All Doctors</Button></Link></div></div></section>
+<section className="py-16 bg-navy text-white"><div className="max-w-7xl mx-auto px-4 text-center"><h2 className="font-serif text-3xl font-semibold mb-4">Ready to get started?</h2><p className="text-white/80 mb-8 max-w-2xl mx-auto">Schedule your appointment today and take the first step toward better ear, nose, and throat health.</p><Link href="/book-appointment"><Button variant="primary" size="lg">Book Your Appointment</Button></Link></div></section>
+<section className="py-20 bg-white dark:bg-gray-900"><div className="max-w-7xl mx-auto px-4"><span className="section-eyebrow text-center">Testimonials</span><h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-12">What Our Patients Say</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{[["Sarah Johnson","The care I received was exceptional. Dr. Smith and his team made me feel comfortable throughout my treatment."],["Michael Chen","After years of sinus problems, I finally found relief. The staff is professional and caring."],["Emily Rodriguez","Life-changing! My hearing is restored and the entire experience was seamless from start to finish."]].map(([n,t])=><Card key={n} className="p-6"><div className="text-yellow-500 mb-3">★★★★★</div><p className="text-muted mb-4 leading-relaxed">“{t}”</p><p className="font-semibold">- {n}</p></Card>)}</div></div></section>
+<section className="py-20 bg-mist dark:bg-gray-800"><div className="max-w-3xl mx-auto px-4"><span className="section-eyebrow text-center">FAQ</span><h2 className="font-serif text-3xl font-semibold text-center mb-10">Frequently Asked Questions</h2>{faqs.map(([q,a])=><details key={q} className="bg-white dark:bg-gray-900 rounded-xl p-5 mb-3 shadow-soft"><summary className="font-semibold cursor-pointer">{q}</summary><p className="text-muted mt-3 leading-relaxed">{a}</p></details>)}</div></section>
+<section className="py-16 bg-teal text-white"><div className="max-w-7xl mx-auto px-4 text-center"><h2 className="font-serif text-3xl font-semibold mb-4">Contact Vic Falls Clinic</h2><p className="text-white/85 mb-8">Call +263 (0) 83 284 4556 or book an appointment online.</p><div className="flex flex-wrap justify-center gap-4"><Link href="/book-appointment"><Button variant="secondary" size="lg">Book Appointment</Button></Link><Link href="/contact"><Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-teal-dark">Contact Us</Button></Link></div></div></section>
+</div>}
