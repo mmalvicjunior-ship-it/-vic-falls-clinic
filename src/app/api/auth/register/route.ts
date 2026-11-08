@@ -1,0 +1,8 @@
+import { NextResponse } from "next/server"; import bcrypt from "bcryptjs"; import { z } from "zod"; import { getDb } from "@/lib/db"; import { rateLimited } from "@/lib/ratelimit";
+const S=z.object({full_name:z.string().min(2).max(120),email:z.string().email().max(200),phone:z.string().min(5).max(30),password:z.string().min(8).max(100),confirm:z.string(),provider_type:z.enum(["client","doctor","nurse","staff"]),registration_ref:z.string().max(100).optional()});
+export async function POST(r:Request){ if(rateLimited("reg:"+(r.headers.get("x-forwarded-for")||"anon"),5)) return NextResponse.json({error:"Too many attempts. Try again later."},{status:429});
+ const sql=getDb(); if(!sql) return NextResponse.json({error:"Registration is temporarily unavailable."},{status:503});
+ const p=S.safeParse(await r.json()); if(!p.success||p.data.password!==p.data.confirm) return NextResponse.json({error:"Invalid input or passwords do not match."},{status:400});
+ const role=p.data.provider_type; const status=role==="client"?"approved":"pending";
+ try{ const hash=await bcrypt.hash(p.data.password,12); await sql`INSERT INTO users(full_name,email,phone,password_hash,role,status,provider_type,registration_ref) VALUES(${p.data.full_name},${p.data.email},${p.data.phone},${hash},${role},${status},${role==="client"?null:role},${p.data.registration_ref||null})`; await sql.end();
+ return NextResponse.json({ok:true,status,message:status==="pending"?"Provider account pending admin approval.":"Account created. Please log in."}); }catch(e){ console.error("register error",e); try{await sql.end();}catch{} return NextResponse.json({error:"Could not create account. The email may already be registered."},{status:400}); } }

@@ -1,14 +1,14 @@
 import { Card } from "@/components/ui/Card";
 
 const surgeries = [
-  { id: "tonsillectomy", title: "Tonsillectomy", icon: "👄", description: "Surgical removal of tonsils for chronic infections or breathing issues.", recovery: "1-2 weeks", duration: "30-45 min" },
-  { id: "septoplasty", title: "Septoplasty", icon: "🔬", description: "Correction of deviated nasal septum for improved breathing.", recovery: "1-2 weeks", duration: "1-2 hours" },
-  { id: "sinus", title: "Sinus Surgery", icon: "👃", description: "Minimally invasive surgery for chronic sinus conditions.", recovery: "1 week", duration: "1-3 hours" },
-  { id: "tympanoplasty", title: "Tympanoplasty", icon: "👂", description: "Repair of eardrum perforations and middle ear reconstruction.", recovery: "2-4 weeks", duration: "1-3 hours" },
-  { id: "myringotomy", title: "Myringotomy", icon: "🔵", description: "Surgical drainage of middle ear fluid with tube placement.", recovery: "1-2 days", duration: "15-30 min" },
-  { id: "stapedectomy", title: "Stapedectomy", icon: "🔊", description: "Surgical treatment for otosclerosis to restore hearing.", recovery: "2-4 weeks", duration: "1-2 hours" },
-  { id: "uppp", title: "Uvulopalatopharyngoplasty", icon: "😴", description: "Surgical treatment for snoring and sleep apnea.", recovery: "2-3 weeks", duration: "1-2 hours" },
-  { id: "neck-dissection", title: "Neck Dissection", icon: "🏥", description: "Removal of lymph nodes in the neck for cancer treatment.", recovery: "4-6 weeks", duration: "2-5 hours" },
+  { id: "tonsillectomy", img: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=60", title: "Tonsillectomy", icon: "👄", description: "Surgical removal of tonsils for chronic infections or breathing issues.", recovery: "1-2 weeks", duration: "30-45 min" },
+  { id: "septoplasty", img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=60", title: "Septoplasty", icon: "🔬", description: "Correction of deviated nasal septum for improved breathing.", recovery: "1-2 weeks", duration: "1-2 hours" },
+  { id: "sinus", img: "https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=800&q=60", title: "Sinus Surgery", icon: "👃", description: "Minimally invasive surgery for chronic sinus conditions.", recovery: "1 week", duration: "1-3 hours" },
+  { id: "tympanoplasty", img: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=60", title: "Tympanoplasty", icon: "👂", description: "Repair of eardrum perforations and middle ear reconstruction.", recovery: "2-4 weeks", duration: "1-3 hours" },
+  { id: "myringotomy", img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=60", title: "Myringotomy", icon: "🔵", description: "Surgical drainage of middle ear fluid with tube placement.", recovery: "1-2 days", duration: "15-30 min" },
+  { id: "stapedectomy", img: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=60", title: "Stapedectomy", icon: "🔊", description: "Surgical treatment for otosclerosis to restore hearing.", recovery: "2-4 weeks", duration: "1-2 hours" },
+  { id: "uppp", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=60", title: "Uvulopalatopharyngoplasty", icon: "😴", description: "Surgical treatment for snoring and sleep apnea.", recovery: "2-3 weeks", duration: "1-2 hours" },
+  { id: "neck-dissection", img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=60", title: "Neck Dissection", icon: "🏥", description: "Removal of lymph nodes in the neck for cancer treatment.", recovery: "4-6 weeks", duration: "2-5 hours" },
 ];
 
 export default function SurgeriesPage() {
@@ -27,7 +27,7 @@ export default function SurgeriesPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {surgeries.map((surgery) => (
-              <Card key={surgery.id} className="p-6 hover:shadow-xl transition" id={surgery.id}>
+              <Card key={surgery.id} className="group overflow-hidden hover:shadow-lift hover:-translate-y-1 transition" id={surgery.id}><div className="card-img h-40 bg-teal-light"><img src={surgery.img} alt="" loading="lazy" /></div><div className="p-6">
                 <div className="text-4xl mb-3">{surgery.icon}</div>
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   {surgery.title}
@@ -38,6 +38,7 @@ export default function SurgeriesPage() {
                 <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400">
                   <span className="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">⏱ {surgery.duration}</span>
                   <span className="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">📅 {surgery.recovery}</span>
+                </div>
                 </div>
               </Card>
             ))}

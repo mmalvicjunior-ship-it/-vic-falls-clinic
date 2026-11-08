@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
@@ -16,9 +16,19 @@ export default function BookAppointmentPage() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Appointment request submitted successfully!");
+  const [doctors, setDoctors] = useState<{id:string;full_name:string;speciality:string|null}[]>([]);
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState("");
+  useEffect(()=>{ fetch("/api/doctors-public").then(r=>r.json()).then(j=>setDoctors(j.doctors||[])); const q=new URLSearchParams(location.search).get("doctor"); if(q) setFormData(f=>({...f,doctor:q})); },[]);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); setBusy(true); setMsg("");
+    try{
+      const sel = doctors.find(d=>d.full_name===formData.doctor);
+      const r = await fetch("/api/appointments",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:formData.name,email:formData.email,phone:formData.phone,date:formData.date,time:formData.time,department:formData.department,message:formData.message,doctor_id:sel&&!sel.id.startsWith("sample")?sel.id:null})});
+      const j = await r.json();
+      setMsg(j.ok?"Appointment request submitted. We will confirm within 24 hours.":(j.error||"Something went wrong."));
+    }catch{ setMsg("Network error. Please try again."); }
+    setBusy(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -89,9 +99,11 @@ export default function BookAppointmentPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Preferred Doctor (Optional)</label>
-              <input type="text" name="doctor" value={formData.doctor} onChange={handleChange}
-                placeholder="Leave blank for any available"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+              <select name="doctor" value={formData.doctor} onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <option value="">Any available</option>
+                {doctors.map(d=><option key={d.id} value={d.full_name}>{d.full_name}{d.speciality?` — ${d.speciality}`:""}</option>)}
+              </select>
             </div>
 
             <div>
@@ -101,8 +113,9 @@ export default function BookAppointmentPage() {
                 className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
             </div>
 
-            <Button type="submit" variant="primary" size="lg" className="w-full">
-              Book Appointment
+            {msg&&<p className="text-sm text-center text-teal-dark">{msg}</p>}
+            <Button type="submit" variant="primary" size="lg" className="w-full" disabled={busy}>
+              {busy?"Submitting…":"Book Appointment"}
             </Button>
 
             <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
