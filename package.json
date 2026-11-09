@@ -38,5 +38,8 @@
     "pg-mem": {
       "postgres": "4.1.0"
     }
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
   }
 }
